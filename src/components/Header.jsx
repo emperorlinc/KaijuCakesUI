@@ -12,7 +12,7 @@ const Header = () => {
         <input type="text" placeholder="What are you looking for?" />
       </div>
       <button className="remove-outline-btn">
-        <BiShoppingBag />
+        <BiShoppingBag className="shopping-bag-icon" />
       </button>
     </div>
   );

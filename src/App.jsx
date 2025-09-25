@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage";
 function App() {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getCategories();
@@ -17,7 +17,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCategory(data);
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
   };
@@ -27,14 +27,14 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
   };
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div className="loading">Loading...</div>;
+  // }
 
   return (
     <>

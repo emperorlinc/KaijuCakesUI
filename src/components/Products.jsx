@@ -2,26 +2,23 @@ import { TbThumbUp } from "react-icons/tb";
 
 const Products = ({ product }) => {
   return (
-    <div className="product-wrapper">
-      {product.map((element) => (
-        <div key={element.id} className="product">
-          <div className="product-category">{element.category.name}</div>
-          <div className="image-wrapper">
-            <img src={element.image} />
+    <>
+      {product.map((cake) => (
+        <div className="cake-card" key={cake.id}>
+          <div className="cake-image">
+            <img src={cake.image} alt="" />
           </div>
-          <div className="product-info">
-            <div className="product-name">{element.name}</div>
-            <div className="product-price">${element.price}</div>
-            <div className="product-btn-wrapper">
-              <button className="add-to-cart-btn">Add to cart</button>
-              <button className="like-btn">
-                <TbThumbUp className="thumbs-icon" />
-              </button>
+          <div className="cake-details">
+            <div>
+              <h3 className="cake-name">{cake.name}</h3>
+              <p className="cake-description">{cake.description}</p>
             </div>
+            <p className="cake-price">${cake.price}</p>
           </div>
+          <button className="add-to-cart-btn">Add to Cart</button>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

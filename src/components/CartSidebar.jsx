@@ -1,5 +1,7 @@
+import { BiTrash } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
-const CartSidebar = ({ toggleCart }) => {
+
+const CartSidebar = ({ toggleCart, cart, remove_cart_item }) => {
   return (
     <>
       <div id="cart-sidebar" className="cart-sidebar">
@@ -14,8 +16,28 @@ const CartSidebar = ({ toggleCart }) => {
           </div>
 
           <div id="cart-items" className="cart-items">
-            {/* Cart items will be added here dynamically */}
-            <div className="empty-cart">Your cart is empty</div>
+            {cart.length === 0 ? (
+              <div className="empty-cart">Your cart is empty</div>
+            ) : (
+              cart.map((item) => (
+                <div key={item.id} className="cart-item">
+                  <div className="cart-item-image">
+                    <img src={item.image} />
+                  </div>
+                  <div className="cart-item-details">
+                    <h4 className="cart-item-name">{item.cake.name}</h4>
+                    <p className="cart-item-price">{item.item_total_price}</p>
+                    {/* {item.cake.description} */}
+                  </div>
+                  <button className="cart-item-remove">
+                    <BiTrash
+                      style={{ fontSize: "25px", margin: "10px" }}
+                      onClick={() => remove_cart_item(item.id)}
+                    />
+                  </button>
+                </div>
+              ))
+            )}
           </div>
 
           <div className="cart-footer">

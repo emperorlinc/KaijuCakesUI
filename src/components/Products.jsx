@@ -1,6 +1,6 @@
 import { TbThumbUp } from "react-icons/tb";
 
-const Products = ({ product }) => {
+const Products = ({ product, add_to_cart }) => {
   return (
     <>
       {product.map((cake) => (
@@ -11,11 +11,16 @@ const Products = ({ product }) => {
           <div className="cake-details">
             <div>
               <h3 className="cake-name">{cake.name}</h3>
-              <p className="cake-description">{cake.description}</p>
+              {/* <p className="cake-description">{cake.description}</p> */}
             </div>
             <p className="cake-price">${cake.price}</p>
           </div>
-          <button className="add-to-cart-btn">Add to Cart</button>
+          <button
+            className="add-to-cart-btn"
+            onClick={() => add_to_cart(cake.id)}
+          >
+            Add to Cart
+          </button>
         </div>
       ))}
     </>

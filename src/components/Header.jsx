@@ -1,7 +1,7 @@
 import { CiMenuBurger } from "react-icons/ci";
-import { BiSearch, BiShoppingBag } from "react-icons/bi";
+import { CgShoppingCart } from "react-icons/cg";
 
-const Header = ({ toggleCart }) => {
+const Header = ({ toggleCart, cart }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -25,12 +25,17 @@ const Header = ({ toggleCart }) => {
         </div>
         <div className="nav-actions">
           <button id="cart-toggle" className="cart-button" onClick={toggleCart}>
-            <BiShoppingBag />
+            <CgShoppingCart style={{ fontSize: "16px" }} />
             <span id="cart-count" className="cart-count">
-              0
+              {cart.length}
             </span>
           </button>
-          <button className="mobile-menu-button">
+          <button
+            className="mobile-menu-button"
+            // onClick={() => {
+            //   document.querySelector(".nav-menu").style.display = "block";
+            // }}
+          >
             <CiMenuBurger />
           </button>
         </div>

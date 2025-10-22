@@ -10,18 +10,29 @@ const LandingPage = ({
   toggleCart,
   productCategory,
   getProducts,
+  cart,
+  add_to_cart,
+  remove_cart_item,
 }) => {
   return (
     <div className="container">
-      <Header toggleCart={toggleCart} />
+      <Header toggleCart={toggleCart} cart={cart} />
       <Carousel />
       <Category
         category={category}
         productCategory={productCategory}
         getProducts={getProducts}
       />
-      <Products product={product} />
-      <CartSidebar toggleCart={toggleCart} />
+      {product.length > 0 ? (
+        <Products product={product} add_to_cart={add_to_cart} />
+      ) : (
+        <div className="empty">No item here yet.</div>
+      )}
+      <CartSidebar
+        toggleCart={toggleCart}
+        cart={cart}
+        remove_cart_item={remove_cart_item}
+      />
     </div>
   );
 };

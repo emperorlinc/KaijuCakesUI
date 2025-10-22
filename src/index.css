@@ -375,6 +375,13 @@ body {
   }
 }
 
+.empty {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Cake Card */
 .cake-card {
   background-color: var(--white);

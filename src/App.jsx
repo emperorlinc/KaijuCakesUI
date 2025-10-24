@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage";
 function App() {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(true);
   const [cartState, setCartState] = useState(false);
 
@@ -16,34 +16,28 @@ function App() {
   }, []);
 
   const getCategories = () => {
-    setLoading(true);
     fetch("http://127.0.0.1:8000/api/category/")
       .then((response) => response.json())
       .then((data) => {
         setCategory(data);
-        setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
   };
 
   const getProducts = () => {
-    setLoading(true);
     fetch("http://127.0.0.1:8000/api/cakes/")
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
-        setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
   };
 
   const productCategory = (id) => {
-    setLoading(true);
     fetch(`http://127.0.0.1:8000/api/category/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
-        setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
   };
@@ -59,17 +53,16 @@ function App() {
   };
 
   const getCart = () => {
-    setLoading(true);
     fetch("http://127.0.0.1:8000/api/cart", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Token ebb3ff1bc536ea493e42ff3a3242369d7fb5fb4f",
+        Authorization: "Token 647aec9c1fe25d01469862afe0469a1b29f6d333",
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        setCart(data);
+        setCart({ data });
         setLoading(false);
       })
       .catch((error) => console.error("Error: ", error));
@@ -80,11 +73,11 @@ function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Token ebb3ff1bc536ea493e42ff3a3242369d7fb5fb4f",
+        Authorization: "Token 647aec9c1fe25d01469862afe0469a1b29f6d333",
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log("Data: ", data))
+      .then((data) => setCart(data))
       .catch((error) => console.error("Error: ", error));
   };
 
@@ -93,11 +86,11 @@ function App() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Token ebb3ff1bc536ea493e42ff3a3242369d7fb5fb4f",
+        Authorization: "Token 647aec9c1fe25d01469862afe0469a1b29f6d333",
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log("Data: ", data))
+      .then((data) => setCart(data))
       .catch((error) => console.error("Error: ", error));
   };
 

@@ -46,6 +46,35 @@ body {
   padding: 0 1rem;
 }
 
+.icon-default {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  color: var(--gray-500);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.search-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.searchbar {
+  width: 100%;
+  height: 60%;
+  border-radius: 5px;
+  border: 1px solid var(--gray-500);
+  outline: none;
+  padding-left: 10px;
+  font-size: 16px;
+  transition: 0.4 ease;
+}
+
 .loading {
   width: 100%;
   height: 100vh;

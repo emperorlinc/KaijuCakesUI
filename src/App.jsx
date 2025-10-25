@@ -8,6 +8,7 @@ function App() {
   const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(true);
   const [cartState, setCartState] = useState(false);
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     getCategories();
@@ -40,16 +41,6 @@ function App() {
         setProduct(data);
       })
       .catch((error) => console.error("Error: ", error));
-  };
-
-  const toggleCart = () => {
-    if (!cartState) {
-      document.querySelector("#cart-sidebar").classList.add("cart-open");
-      setCartState(!cartState);
-    } else {
-      document.querySelector("#cart-sidebar").classList.remove("cart-open");
-      setCartState(!cartState);
-    }
   };
 
   const getCart = () => {
@@ -94,6 +85,28 @@ function App() {
       .catch((error) => console.error("Error: ", error));
   };
 
+  const toggleCart = () => {
+    if (!cartState) {
+      document.querySelector("#cart-sidebar").classList.add("cart-open");
+      setCartState(!cartState);
+    } else {
+      document.querySelector("#cart-sidebar").classList.remove("cart-open");
+      setCartState(!cartState);
+    }
+  };
+
+  const toggleSearch = () => {
+    if (!search) {
+      // document.querySelector("#cart-sidebar").classList.add("search-open");
+      console.log("Opened...");
+      setSearch(!search);
+    } else {
+      // document.querySelector("#cart-sidebar").classList.remove("search-open");
+      console.log("Closed...");
+      setSearch(!search);
+    }
+  };
+
   if (loading) {
     return (
       <div className="loading">
@@ -113,6 +126,8 @@ function App() {
         cart={cart}
         add_to_cart={add_to_cart}
         remove_cart_item={remove_cart_item}
+        toggleSearch={toggleSearch}
+        search={search}
       />
     </>
   );

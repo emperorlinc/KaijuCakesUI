@@ -1,7 +1,27 @@
 import { CiMenuBurger } from "react-icons/ci";
 import { CgShoppingCart } from "react-icons/cg";
+import { BiArrowBack, BiSearch } from "react-icons/bi";
 
-const Header = ({ toggleCart, cart }) => {
+const Header = ({ toggleCart, cart, toggleSearch, search }) => {
+  if (search) {
+    return (
+      <nav className="navbar">
+        <div className="nav-container">
+          <div className="search-wrapper">
+            <button className="icon-default" onClick={toggleSearch}>
+              <BiArrowBack style={{ fontSize: "20px" }} />
+            </button>
+            <input
+              type="text"
+              className="searchbar"
+              placeholder="Filter by celebrations, flavours, colors..."
+            />
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -24,8 +44,19 @@ const Header = ({ toggleCart, cart }) => {
           </a>
         </div>
         <div className="nav-actions">
-          <button id="cart-toggle" className="cart-button" onClick={toggleCart}>
-            <CgShoppingCart style={{ fontSize: "16px" }} />
+          <button
+            id="cart-toggle"
+            className="cart-button"
+            onClick={toggleSearch}
+          >
+            <BiSearch style={{ fontSize: "18px" }} />
+          </button>
+          <button
+            id="search-toggle"
+            className="icon-default"
+            onClick={toggleCart}
+          >
+            <CgShoppingCart style={{ fontSize: "18px" }} />
             <span id="cart-count" className="cart-count">
               {cart.length}
             </span>
@@ -36,7 +67,7 @@ const Header = ({ toggleCart, cart }) => {
             //   document.querySelector(".nav-menu").style.display = "block";
             // }}
           >
-            <CiMenuBurger />
+            <CiMenuBurger style={{ fontSize: "18px" }} />
           </button>
         </div>
       </div>
